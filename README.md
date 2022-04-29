@@ -11,7 +11,7 @@ That's way new developers will not spend any time for installing dependencies or
 If you want to package dependencies for your project:
  1. Create an empty directory in the project directory
  2. Initialise it as a package storage with `cpack init`
- 3. Add libraries to the package storage with `cpack <env> <library> add header|library <file>`
+ 3. Add libraries to the package storage with `cpack <env> <library> <version> add header|library <file>`
  4. Upload libraries to a remote repository by running `cpack push`
 
 If you have a project with the package storage:
@@ -22,13 +22,14 @@ If you have a project with the package storage:
 Package storage is the directory that contains all libraries for every environment and information about them.
 
 ```
-<package directory>
+<package storage>
 |- libraries.json       # contains all information about all libraries
-|- env1                 # directory for certain environment ('linux', 'darwin', etc.)
-|   |- include          # header files
-|   |- lib              # static and dynamic libraries
-|- env2
-|   ...
+|- main                 # libraries for currently selected environment
+|  |- include           # header files (links to header files in 'storage' directory)
+|  |- lib               # static and dynamic libraries (links to files in 'storage' directory)
+|- storage              # storage for all downloaded libraries
+|  |- env1              # libraries for the specific environment
+|     |- library1       # files for certain library
 ```
 
 ## How to store libraries remotely
