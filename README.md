@@ -24,13 +24,14 @@ Package storage is the directory that contains all libraries for every environme
 
 ```
 <package storage>
-|- libraries.json       # contains all information about all libraries
+|- dependencies.json    # contains all information about all libraries
 |- main                 # libraries for currently selected environment
 |  |- include           # header files (links to header files in 'storage' directory)
 |  |- lib               # static and dynamic libraries (links to files in 'storage' directory)
 |- storage              # storage for all downloaded libraries
-|  |- env1              # libraries for the specific environment
-|     |- library1       # files for certain library
+|  |- library1          # files for certain library
+|     |- env1           # library files for specific environment
+|     |- lib.json       # description of the certain library
 ```
 
 ## How to store libraries remotely
