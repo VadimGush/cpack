@@ -38,3 +38,6 @@ Find any server and launch `cpack-server` on it. It will act as a repository for
 
 Then just add host of that server to `libraries.json` and run `cpack push` to upload local libraries or `cpack pull` to download libraries.
 
+## Motivation
+Because why not.
+
