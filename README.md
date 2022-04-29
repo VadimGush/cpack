@@ -18,9 +18,11 @@ If you want to pack dependencies then you need to do the following:
 
 If you want to use the already created package with dependencies:
  1. Unpack that package with `cppdep unpack`
- 2. Set include and lib path to packaged libraries
+ 2. Set include and lib path to libraries inside of package directory
 
 ## Structure of package directory
+Package directory is the directory that contains all libraries for every environment and information about them.
+
 ```
 <package directory>
 |- info.json            # contains all information about all libraries
@@ -30,4 +32,9 @@ If you want to use the already created package with dependencies:
 |- env2
 |   ...
 ```
+
+## What about remote storage?
+You can tell `cppdep` to use remote storage to load or save package with dependencies.  
+Just make simple file `remote.json` in your package directory (or empty directory) and run `cppdep push` to upload
+current package to a remote storage or `cppdep pull` to load latest package state.
 
