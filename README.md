@@ -31,7 +31,8 @@ Package storage is the directory that contains all libraries for every environme
 |- storage              # storage for all downloaded libraries
 |  |- library1          # files for certain library
 |     |- env1           # library files for a specific environment
-|     |- lib.json       # description of the certain library
+|        |- include     # include files of the library
+|        |- lib         # static and dymamic libraries
 ```
 
 ## How to store libraries remotely
