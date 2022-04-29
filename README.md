@@ -1,31 +1,29 @@
 # cpack
-C++ dependency packager.  
-Packs all your C/C++ libraries into one package and allows you to easily manage them.
+C++ package manager. 
+Manages dependencies for your C++ project by storing them in one place.
 
 ## Why do I need that?
 
-You have C++ project with a lot of dependencies and you want to ship them with your project as a single package.  
-
-It allows new developers to not spend any time installing and searching for required libraries for your project. They can just
-load package with all dependencies by using `cpack`.
+You have C++ project with a lot of dependencies and you want to have them in one place and distribute them with your project.  
+That's way new developers will not spend any time for installing dependencies or searching for required version of specific library.
 
 ## How does it work?
-If you want to pack dependencies then you need to do the following:
- 1. Create an empty directory
- 2. Initialise it as a package directory with `cpack init`
- 3. Add include and lib files for every library with `cpack <env> <library> add header|library <file>`
- 4. Create zip package with all dependencies with `cpack pack` or upload to remote storage with `cpack push`
+If you want to package dependencies for your project:
+ 1. Create an empty directory in the project directory
+ 2. Initialise it as a package storage with `cpack init`
+ 3. Add libraries to the package storage with `cpack <env> <library> add header|library <file>`
+ 4. Upload libraries to a remote repository by running `cpack push`
 
-If you want to use the already created package with dependencies:
- 1. Unpack that zip package with `cpack unpack` or load from remote storage with `cpack pull`
- 2. Set include and lib path to libraries inside of package directory
+If you have a project with the package storage:
+ 1. Load all libraries required for the project with `cpack pull`
+ 2. Set include and lib path to libraries inside of the package storage
 
-## Structure of package directory
-Package directory is the directory that contains all libraries for every environment and information about them.
+## Structure of package storage
+Package storage is the directory that contains all libraries for every environment and information about them.
 
 ```
 <package directory>
-|- info.json            # contains all information about all libraries
+|- libraries.json       # contains all information about all libraries
 |- env1                 # directory for certain environment ('linux', 'darwin', etc.)
 |   |- include          # header files
 |   |- lib              # static and dynamic libraries
@@ -33,8 +31,8 @@ Package directory is the directory that contains all libraries for every environ
 |   ...
 ```
 
-## What about remote storage?
-You can tell `cpack` to use remote storage to load or save package with dependencies.  
-Just make simple file `remote.json` in your package directory (or empty directory) and run `cpack push` to upload
-current package to a remote storage or `cpack pull` to load latest package state.
+## How to store libraries remotely
+Find any server and launch `cpack-server` on it. It will act as a repository for all libraries that you need for the project.
+
+Then just add host of that server to `libraries.json` and run `cpack pull`.
 
