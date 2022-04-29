@@ -1,5 +1,5 @@
 # cppdep
-C++ dependency manager.  
+C++ dependency packager.  
 Packs all your C/C++ libraries which your project depend upon into one package and allows you to easily manage them.
 
 ## Why do I need that?
